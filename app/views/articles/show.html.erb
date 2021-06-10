@@ -1,0 +1,12 @@
+
+<h2><%= @article.title %></h2>
+<p><%= @article.description %></p>
+<small><%= @article.created_at %></small>
+<p>
+    <%= link_to 'Edit this article', 
+        edit_article_path(@article.id), 
+        style: "color: blue" %> |
+        <%= link_to "Back to articles listing", 
+        articles_path, 
+        style: "color: blue" %>
+</p>
