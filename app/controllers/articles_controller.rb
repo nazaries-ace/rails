@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
     end
     def update
         if @article.update(article_params)
-            redirect_to article_path(@article), notice: "Article was successfully updated!"
+            redirect_to article_path(@article), flash: { success: "Article was successfully updated!" }
             return
         else
             render 'new'
@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     def create
         @article = Article.new(article_params)
         if @article.save
-            redirect_to article_path(@article), notice: "Article was successfully created"
+            redirect_to article_path(@article), flash: { success: "Article was successfully created" }
             return
         else
             render 'new'
@@ -32,12 +32,12 @@ class ArticlesController < ApplicationController
         if Article.where(id: params[:id]).exists?(conditions = :none)
             set_article
         else
-            redirect_to articles_path, notice: "There is no post with the id #{params[:id]}"
+            redirect_to articles_path, flash: { danger: "There is no post with the id #{params[:id]}" }
         end
     end
     def destroy
         @article.destroy
-        redirect_to articles_path, notice: "Article was successfully deleted"
+        redirect_to articles_path, flash: { success: "Article was successfully deleted" }
     end
     private
         def set_article

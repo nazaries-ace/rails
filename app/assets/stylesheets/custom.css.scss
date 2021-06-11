@@ -1,0 +1,17 @@
+@import "bootstrap";
+
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+}
+nav.sticky-top {
+    background-color: #e3f2fd !important;
+
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

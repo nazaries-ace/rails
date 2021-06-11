@@ -1,3 +1,6 @@
-<h2>Modify the article <%= @article.id%></h2>
-
-<%= render 'form' %>
+<div class="container">
+    <h2 class="text-white bg-dark my-5 px-3 py-2 rounded">Modify the article: <span class="bg-danger px-2 rounded fs-4"><%= @article.id%></span></h2>
+</div>
+<div class="container bg-light p-5 rounded">
+    <%= render 'form' %>
+</div>

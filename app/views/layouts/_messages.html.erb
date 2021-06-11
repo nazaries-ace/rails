@@ -1,5 +1,8 @@
-<% flash.each do |type,msg| %>
-    <ul>
-      <li><%= msg %></li>
-    </ul>
-<% end %>
+<div class="container">
+  <% flash.each do |type,msg| %>
+    <div class="alert alert-<%= type %> alert-dismissible fade show my-3 rounded fs-6 text-center" role="alert">
+      <strong><%= type.capitalize %>:</strong> <%= msg %>!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+</div>
