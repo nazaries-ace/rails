@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
     validates :username, uniqueness: { case_sensitive: false }, presence: true, length: { minimum: 3, maximum: 25 }
     validates :email, uniqueness: { case_sensitive: false }, presence: true, length: { minimum: 6, maximum: 50 },
                 format: { with: VALID_EMAIL_REGEX }
+    has_secure_password
 end

@@ -1,8 +1,13 @@
 <div class="container">
-    <h2 class="text-white bg-dark mt-5 mb-2 px-3 py-2 rounded"><%= @article.title %></h2>
+    <h2 class="text-white bg-dark mt-5 mb-2 px-3 py-2 rounded">
+        <%= @article.title %>
+    </h2>
     <div class="bg-light p-3 rounded">
         <p class="fs-6 lh-base"><%= @article.description %></p>
-        <p class="text-success mb-5"><strong>Published:</strong> <small><%= @article.created_at %></small></p>
+        <p class="mb-5 text-center">
+            <strong>Published:</strong> <small class="text-success"><%= time_ago_in_words(@article.created_at) %></small> -
+            <strong>@Author:</strong> <small class="text-info"><%= @article.user.username %></small>
+        </p>
         <div class="text-center my-3">
             <%= link_to 'Edit this article', 
             edit_article_path(@article.id), 
