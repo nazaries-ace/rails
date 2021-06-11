@@ -13,8 +13,7 @@
 <% end %>
 
 
-    <%= form_for @article do |f| %>
-
+<%= form_for @article do |f| %>
     <div class="row mb-3">
         <div class="col-lg-3"><%= f.label :title, for: "title", class: "form-label" %></div>
         <div class="col-lg-9"><%= f.text_field :title,class: "form-control", id: "title", placeholder:"Enter the title" %></div>
@@ -26,10 +25,9 @@
     <div class="row mb-3">
         <%= f.submit class: "btn btn-primary" %> 
     </div>
-
-    <% end %>
+<% end %>
     
 
-    <div class="text-center">
-        [ <%= link_to "Back to articles listing", articles_path %> ]
-    </div>
+<div class="text-center">
+    [ <%= link_to "Back to articles listing", articles_path %> ]
+</div>

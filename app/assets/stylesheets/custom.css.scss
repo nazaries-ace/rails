@@ -5,13 +5,18 @@ html {
 }
 body {
     min-height: 100%;
+    margin-bottom: 100px;
+}
+main {
+    min-height: 100vh;
 }
 nav.sticky-top {
     background-color: #e3f2fd !important;
 
 }
-footer {
+/*footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-}
+    height: 50px;
+}*/
