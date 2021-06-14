@@ -4,10 +4,13 @@
     </h2>
     <div class="bg-light p-3 rounded">
         <p class="fs-6 lh-base"><%= @article.description %></p>
-        <p class="mb-5 text-center">
-            <strong>Published:</strong> <small class="text-success"><%= time_ago_in_words(@article.created_at) %></small> -
-            <strong>@Author:</strong> <small class="text-info"><%= @article.user.username %></small>
-        </p>
+        <% if @article.user.articles %>
+            <p class="mb-5 text-center">
+                <strong>Published:</strong> <small class="text-success"><%= time_ago_in_words(@article.created_at) %></small> -
+                <strong>@Author:</strong> <small class="text-info"><%= @article.user.username %></small> - 
+                <span class="bg-danger text-white p-2 rounded"><%= pluralize(@article.user.articles.count, "article") %></span>
+            </p>
+        <% end %>
         <div class="text-center my-3">
             <%= link_to 'Edit this article', 
             edit_article_path(@article.id), 

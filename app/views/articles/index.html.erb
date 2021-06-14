@@ -1,6 +1,12 @@
 <div class="container">
   <h2 class="text-white bg-dark mt-5 mb-2 px-3 py-2 rounded">Articles List</h2>
+  <nav class="d-flex justify-content-center mt-4">
+    <%= will_paginate(renderer: BootstrapPagination::Rails) %>
+  </nav>
   <%= render 'article_list', obj: @articles %>
+  <nav class="d-flex justify-content-center my-4">
+    <%= will_paginate(renderer: BootstrapPagination::Rails) %>
+  </nav>
 
   <div class="text-center mt-3">
     <%= link_to 'Create a new Post', new_article_path, class: 'btn btn-primary me-3' %>
