@@ -1,0 +1,17 @@
+<%= form_for @user do |f| %>
+    <div class="row mb-3">
+        <div class="col-lg-3"><%= f.label :username, for: "username", class: "form-label" %></div>
+        <div class="col-lg-9"><%= f.text_field :username,class: "form-control", id: "username", placeholder:"Enter your username" %></div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-lg-3"><%= f.label :email, for: "email", class: "form-label" %></div>
+        <div class="col-lg-9"><%= f.email_field :email,class: "form-control", id: "email", placeholder:"Enter your email" %></div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-lg-3"><%= f.label :password, for: "password", class: "form-label" %></div>
+        <div class="col-lg-9"><%= f.password_field :password, class: "form-control", id: "password", placeholder:"Enter your password" %></div>
+    </div>
+    <div class="row mb-3">
+        <%= f.submit(@user.new_record? ? "Sign Up" : "Update your profile", class: "btn btn-primary mt-3") %> 
+    </div>
+<% end %>
