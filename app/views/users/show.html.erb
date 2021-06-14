@@ -1,0 +1,12 @@
+<div class="container text-center my-5">
+    <h2>Welcome to <strong class="text-info"><%= @user.username %>'s</strong> page</h2>
+
+    <div class="row my-3">
+        <div class="col-12 text-center">
+            <%= gravatar_for @user, size: 150 %>
+        </div>
+    </div>
+
+    <h3><%= @user.username %>'s articles</h3>
+    <%= render 'articles/article_list', obj: @user.articles %>
+</div>
