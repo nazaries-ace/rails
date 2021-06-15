@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-light bg-light">
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
    <div class="container-fluid">
       <%= link_to raw('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" 
           class="bi bi-braces" viewBox="0 0 16 16">
@@ -15,10 +15,62 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <%= link_to 'About Us',about_path, class:"nav-link" %>
-          <%= link_to 'Articles',articles_path, class:"nav-link" %>
-        </div>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <%= link_to 'Articles',articles_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Users',users_path, class:"nav-link" %>
+          </li>
+          <% if logged_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Articles
+              </a>
+              <ul class="dropdown-menu mb-2 mb-lg-0" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <%= link_to 'View all',articles_path, class:"dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to 'Create new post',new_article_path, class:"dropdown-item" %>
+                </li>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+        <form class="d-flex">
+          <% if logged_in? %>
+            <%= link_to 'Logout',logout_path, method: :delete, class:"btn btn-outline-danger me-2 mb-2 mb-lg-0" %>
+            <div class="dropdown">
+              <button class="btn btn-info dropdown-toggle" type="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
+                Your profile
+              </button>
+              <ul class="dropdown-menu mb-2 mb-lg-0" aria-labelledby="profile">
+                <li>
+                  <%= link_to 'Edit your profile',edit_user_path(current_user), class:"dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to 'View your profile',user_path(current_user), class:"dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+            
+          <% else %>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Access
+              </button>
+              <ul class="dropdown-menu mb-2 mb-lg-0" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <%= link_to 'Sign Up',signup_path, class:"dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to 'Login',login_path, class:"dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </form>
       </div>
     </div>
 </nav>

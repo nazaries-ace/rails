@@ -11,10 +11,14 @@
                 <span class="bg-danger text-white p-2 rounded"><%= pluralize(@article.user.articles.count, "article") %></span>
             </p>
         <% end %>
+        
         <div class="text-center my-3">
-            <%= link_to 'Edit this article', 
-            edit_article_path(@article.id), 
-            class: "btn btn-warning me-3" %> 
+            <% if logged_in? && current_user == @article.user%>
+                <%= link_to 'Edit this article', 
+                edit_article_path(@article.id), 
+                class: "btn btn-warning me-3" %> 
+            <% end %>
+
             <%= link_to "Back to articles listing", 
             articles_path, 
             class: "btn btn-primary" %>

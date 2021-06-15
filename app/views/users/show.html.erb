@@ -8,6 +8,7 @@
     </div>
 
     <h3><%= @user.username %>'s articles</h3>
+    
     <nav class="d-flex justify-content-center mt-5 mb-4">
         <%= will_paginate(@user_articles, renderer: BootstrapPagination::Rails) %>
     </nav>
