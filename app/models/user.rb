@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    has_many :articles
+    has_many :articles, dependent: :destroy
     self.per_page = 2
     before_save { self.email = email.downcase }
     

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:edit, :update, :show]
+    before_action :set_user, only: [:edit, :update, :show, :destroy]
     before_action :require_same_user, only: [:edit, :update]
+    before_action :require_admin, only: [:destroy]
     
     def index
         @users = User.paginate(page: params[:page])
@@ -35,6 +36,11 @@ class UsersController < ApplicationController
         @user_articles.per_page = 2
         
     end
+    def destroy
+        @user.destroy
+        flash[:info] = "User and all articles created by user have been deleted"
+        redirect_to users_path
+    end
     
     private
     def user_params
@@ -44,8 +50,14 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
     def require_same_user
-        if current_user != @user
+        if current_user != @user and !current_user.admin?
             flash[:danger] = "To edit another profiles is not allowed"
+            redirect_to root_path
+        end
+    end
+    def require_admin
+        if logged_in? and !current_user.admin?
+            flash[:danger] = "Unauthorized action"
             redirect_to root_path
         end
     end
