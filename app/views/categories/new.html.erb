@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <% if @category.errors.any? %>
+        <div class="container">
+            <div class="alert alert-warning" role="alert">
+                <h3>Check the following: </h3>
+                <ul>
+                    <% @category.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    <% end %>
+    <h2 class="mb-3 bg-dark text-white rounded ps-3 py-2"><em>Create new category</em></h2>
+
+    <%= form_for @category do |f| %>
+        <div class="row mb-3">
+            <div class="col-lg-3"><%= f.label :name, for: "name", class: "form-label" %></div>
+            <div class="col-lg-9"><%= f.text_field :name,class: "form-control", id: "name", placeholder:"Enter category name" %></div>
+        </div>
+        <div class="row mb-3">
+            <%= f.submit class: "btn btn-primary mt-3" %> 
+        </div>
+    <% end %>
+    <div class="text-center">
+        [ <%= link_to 'Cancel request and return to articles listing', articles_path %> ]
+    </div>
+</div>

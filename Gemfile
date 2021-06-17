@@ -31,13 +31,19 @@ gem 'will_paginate', '~> 3.3.0'
 gem 'will_paginate-bootstrap', '~> 1.0.2'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+# An XML toolkit for Ruby
+gem 'rexml', '~> 3.2', '>= 3.2.5'
+#manages an application's dependencies through its entire life, across many machines, systematically and repeatably
+#gem 'bundler', '~> 2.2', '>= 2.2.20'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '>= 1.7.5', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Extracting `assigns` and `assert_template` from ActionDispatch
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
 end
 
 group :development do
